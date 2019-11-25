@@ -7,17 +7,20 @@ class MovieItem extends React.Component{
             <div>
                 <h4>{this.props.movie.Title}</h4>
                 <p>{this.props.movie.Year}</p>
-                <img src={this.props.movie.Poster} width="200" height="200" alt="Error"></img>
-                <Card  border="primary" style={{ width: '28rem' }}>
-  <Card.Header>{this.props.movie.Title}</Card.Header>
-  <Card.Body>
-    <blockquote className="blockquote mb-0">
-    <img src={this.props.movie.Poster}></img>
-      <footer>
-      {this.props.movie.Year}
-      </footer>
-    </blockquote>
-  </Card.Body>
+                <img src={this.props.movie.Poster} alt="Error"></img>
+                
+               
+                <Card>
+                <Card.Header>{this.props.movie.Title}</Card.Header>
+                <Card.Body>
+                <blockquote className="blockquote mb-0">
+                
+                <img src={this.props.movie.Poster} width="200" height="200"></img>
+                <footer>
+                {this.props.movie.Year}
+                </footer>
+                </blockquote>
+                </Card.Body>
 </Card>
             </div>
 
