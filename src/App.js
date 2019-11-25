@@ -6,12 +6,14 @@ import { Footer } from './components/footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import Create from './components/create';
+import Read from './components/read';
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <Navbar bg="primary" variant="dark">
             <Nav className="mr-auto">
@@ -23,13 +25,13 @@ class App extends Component {
           <br />
           <Switch>
             <Route path='/' component={Content} exact />
-            <Route exact path='/create' component={Footer} />
-            <Route path='/read' component={Header} />
+            <Route path='/create' component={Create} />
+            <Route path='/read' component={Read} />
           </Switch>
       </div>
-      </Router>
-);
-}
+      </BrowserRouter>
+      );
+    }
   }
 export default App;
 
