@@ -16,9 +16,9 @@ class MovieItem extends React.Component{
                 <blockquote className="blockquote mb-0">
                 
                 <img src={this.props.movie.Poster} width="200" height="200"></img>
-                <footer>
-                {this.props.movie.Year}
-                </footer>
+                    <footer>
+                        {this.props.movie.Year}
+                    </footer>
                 </blockquote>
                 </Card.Body>
 </Card>
