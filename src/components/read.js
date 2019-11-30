@@ -7,9 +7,9 @@ import axios from 'axios';
         };
     
         componentDidMount() {
-            axios.get('https://jsonblob.com/api/jsonblob/090d3cd5-e03d-11e9-a2ce-89c479f14772')
+            axios.get('http://localhost:4000/api/books')
             .then((response)=>{
-                this.setState({books: response.data.Search})
+                this.setState({books: response.data.books})
             })
             .catch((error)=>{
                 console.log(error);
@@ -19,7 +19,7 @@ import axios from 'axios';
         render(){
             return(
                 <div>
-                    <h1>Hello from Read Component</h1>
+                    <h1>Read Component</h1>
                     <Books myBooks={this.state.books}></Books>
                 </div>
             );

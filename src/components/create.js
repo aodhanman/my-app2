@@ -64,7 +64,7 @@ class Create extends React.Component {
   render() {
     return (
       <div className="App">
-        <h2>This is the Create component.</h2>
+        <h2>Create </h2>
 
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

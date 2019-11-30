@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Create extends React.Component {
+class Delete extends React.Component {
 
   constructor() {
     super();
@@ -64,11 +64,11 @@ class Create extends React.Component {
   render() {
     return (
       <div className="App">
-        <h2>Update</h2>
+        <h2>Delete</h2>
 
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Add Book Name: </label>
+            <label>Delete Book Name: </label>
             <input type="text"
               className="form-control"
               value={this.state.Title}
@@ -76,7 +76,7 @@ class Create extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label>Add Release Year: </label>
+            <label>Delete Release Year: </label>
             <input type="text"
               className="form-control"
               value={this.state.Year}
@@ -84,7 +84,7 @@ class Create extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label>Add Rating : </label>
+            <label>Delete Rating : </label>
             <input type="text"
               className="form-control"
               value={this.state.Rating}
@@ -92,7 +92,7 @@ class Create extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label>Add Poster Url: </label>
+            <label>Delete Poster Url: </label>
             <input type="text"
               className="form-control"
               value={this.state.Poster}
@@ -107,4 +107,4 @@ class Create extends React.Component {
     );
   }
 }
-export default Create;
+export default Delete;

@@ -23,8 +23,8 @@ class App extends Component {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/read">Read</Nav.Link>
             <Nav.Link href="/create">Create</Nav.Link>
-            <Nav.Link href="/create">Edit</Nav.Link>
-            <Nav.Link href="/create">Delete</Nav.Link>
+            <Nav.Link href="/edit">Edit</Nav.Link>
+            <Nav.Link href="/delete">Delete</Nav.Link>
 
 
           </Nav>
@@ -34,9 +34,9 @@ class App extends Component {
             <Route path='/' component={Content} exact />
             <Route path='/create' component={Create} />
             <Route path='/read' component={Read} />
-            <Route path='/read' component={Edit} />
+            <Route path='/edit' component={Edit} />
 
-            <Route path='/read' component={Delete} />
+            <Route path='/delete' component={Delete} />
 
           </Switch>
       </div>
