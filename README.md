@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-App is a simple book tracking app that should track users read books and their future reading list
+App is a simple book tracking app that should track users read books and their future reading list.
+
+There are navigation buttons to help navigate the app. Includes buttons for creating, deleting and editing books. 
+
+Should also have a reading list in the future to keep track of your progress and reading list
 
 
 ## Available Scripts
