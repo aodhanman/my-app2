@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+App is a simple book tracking app that should track users read books and their future reading list
+
+
 ## Available Scripts
 
 In the project directory, you can run:
