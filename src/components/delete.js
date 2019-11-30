@@ -50,7 +50,7 @@ class Create extends React.Component {
 
     };
 
-      axios.post('http://localhost:4000/api/books',newBook) 
+      axios.put('http://localhost:4000/api/books',newBook) 
       .then()
       .catch();
 
@@ -64,7 +64,7 @@ class Create extends React.Component {
   render() {
     return (
       <div className="App">
-        <h2>This is the Create component.</h2>
+        <h2>Update</h2>
 
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -100,7 +100,7 @@ class Create extends React.Component {
             />
           </div>
           <div className="form-group">
-            <input type="submit" value="Add Book" className="btn btn-primary" />
+            <input type="submit" value="Delete Book" className="btn btn-primary" />
           </div>
         </form>
       </div>

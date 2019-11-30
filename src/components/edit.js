@@ -100,7 +100,7 @@ class Create extends React.Component {
             />
           </div>
           <div className="form-group">
-            <input type="submit" value="Add Book" className="btn btn-primary" />
+            <input type="submit" value="Edit Book" className="btn btn-primary" />
           </div>
         </form>
       </div>
