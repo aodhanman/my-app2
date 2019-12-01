@@ -33,7 +33,8 @@ class Delete extends React.Component {
     this.setState({
       Poster: e.target.value
     });
-  }onChangeBookRating(e) {
+  }
+  onChangeBookRating(e) {
     this.setState({
       Rating: e.target.value
     });

@@ -1,87 +1,134 @@
-const mongoose = require('mongoose');
-const express = require('express');
-var cors = require('cors');
+// server.js mostly taken from MERN application
+
+const express = require('express')
+const app = express()
+const port = 4000
+const path = require('path');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
-const Data = require('./data');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
-const API_PORT = 3000;
-const app = express();
+const mongoDB = 'mongodb+srv://user:<user2>@cluster0-cbiqc.mongodb.net/test?retryWrites=true&w=majority';
+
+mongoose.connect(mongoDB,  {useNewUrlParser:true});
+
 app.use(cors());
-const router = express.Router();
-
-// MongoDB database
-
-const dbRoute =
-  'mongodb+srv://user:<password>@cluster0-cbiqc.mongodb.net/test?retryWrites=true&w=majority';
-
-
-mongoose.connect(dbRoute, { useNewUrlParser: true });
-
-let db = mongoose.connection;
-
-db.once('open', () => console.log('connected to the database'));
-
-// check if connection with the database is successful
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-//parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(logger('dev'));
-
-// get method
-// fetches all available 
-router.get('/getData', (req, res) => {
-  Data.find((err, data) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true, data: data });
-  });
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
-// update method
-// overwrites existing 
-router.post('/updateData', (req, res) => {
-  const { id, update } = req.body;
-  Data.findByIdAndUpdate(id, update, (err) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
-  });
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-// delete method
-// removes existing 
-router.delete('/deleteData', (req, res) => {
-  const { id } = req.body;
-  Data.findByIdAndRemove(id, (err) => {
-    if (err) return res.send(err);
-    return res.json({ success: true });
-  });
-});
+// parse application/json
+app.use(bodyParser.json())
 
-// create method
-// adds new 
-router.post('/putData', (req, res) => {
-  let data = new Data();
+const Schema = mongoose.Schema;
 
-  const { id, message } = req.body;
+const bookSchema = new Schema({
+    title:String,
+    year:String,
+    rating: String,
+    poster:String
+})
 
-  if ((!id && id !== 0) || !message) {
-    return res.json({
-      success: false,
-      error: 'INVALID INPUTS',
+const BookModel = mongoose.model('book', bookSchema);
+
+
+app.get('/', (req, res) => res.send('Testing...'))
+
+app.get('/api/books', (req, res) => {
+    res.send('/api/books')
+})
+
+app.get('/name', (req, res) => {
+    console.log(req.query.lastname)
+    res.send('Welcome ' + req.query.firstname +
+        ' ' + req.query.lastname);
+})
+
+app.get('/name/:title', (req, res) => {
+    BookModel.findOne({title:req.params.title},
+    (error,data)=>{
+        res.json(data);
+    }
+    )
+})
+
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+})
+
+app.get('/api/books', (req, res) => {
+
+    BookModel.find((error, data) =>{
+        res.json({books:data});
+    })
+    
+})
+
+app.get('/api/books/:id', (req, res)=>{
+    console.log(req.params.id);
+
+    BookModel.findById(req.params.id, (error,data)=>{
+        res.json(data);
+    })
+})
+
+app.delete('/api/books/:id', (req, res)=>{
+    console.log(req.params.id);
+
+    BookModel.deleteOne({_id: req.params.id},
+        (error, data) =>{
+            res.json(data);
+        })
+})
+
+app.put('/api/books/:id',(req,res)=>{
+    console.log("Edit: "+req.params.id);
+    console.log(req.body);
+    
+    BookModel.findByIdAndUpdate(req.params.id,
+        req.body,
+        {new:true},
+        (error,data)=>{
+            res.json(data);
+        })
+})
+
+app.get('/api/books/:id', (req,res)=>{
+    console.log("GET: "+req.params.id);
+
+    BookModel.findById(req.params.id,(error, data)=>{
+        res.json(data);
+    })
+})
+
+app.post('/api/books', (req,res)=>{
+    console.log('Post request Successful');
+    console.log(req.body.title);
+    console.log(req.body.year);
+    console.log(req.body.rating);
+
+    console.log(req.body.poster);
+
+    BookModel.create({
+        title:req.body.title, 
+        year:req.body.year, 
+        year:req.body.rating, 
+
+        poster:req.body.poster
     });
-  }
-  data.message = message;
-  data.id = id;
-  data.save((err) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
-  });
-});
 
-// append /api for our http requests
-app.use('/api', router);
+    res.json('post recieved!');
+})
+app.get('/hello/:name', (req, res) => {
+    console.log(req.params.name);
+    res.send('Hello ' + req.params.name)
+})
 
-// launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
