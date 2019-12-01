@@ -45,19 +45,6 @@ app.get('/api/books', (req, res) => {
     res.send('/api/books')
 })
 
-app.get('/name', (req, res) => {
-    console.log(req.query.lastname)
-    res.send('Welcome ' + req.query.firstname +
-        ' ' + req.query.lastname);
-})
-
-app.get('/name/:title', (req, res) => {
-    BookModel.findOne({title:req.params.title},
-    (error,data)=>{
-        res.json(data);
-    }
-    )
-})
 
 app.get('/test', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
@@ -71,28 +58,28 @@ app.get('/api/books', (req, res) => {
     
 })
 
-app.get('/api/books/:id', (req, res)=>{
-    console.log(req.params.id);
+app.get('/api/books/:name', (req, res)=>{
+    console.log(req.params.name);
 
-    BookModel.findById(req.params.id, (error,data)=>{
+    BookModel.findById(req.params.name, (error,data)=>{
         res.json(data);
     })
 })
 
-app.delete('/api/books/:id', (req, res)=>{
-    console.log(req.params.id);
+app.delete('/api/books/:name', (req, res)=>{
+    console.log(req.params.name);
 
-    BookModel.deleteOne({_id: req.params.id},
+    BookModel.deleteOne({_name: req.params.name},
         (error, data) =>{
             res.json(data);
         })
 })
 
-app.put('/api/books/:id',(req,res)=>{
-    console.log("Edit: "+req.params.id);
+app.put('/api/books/:name',(req,res)=>{
+    console.log("Edit: "+req.params.name);
     console.log(req.body);
     
-    BookModel.findByIdAndUpdate(req.params.id,
+    BookModel.findByIdAndUpdate(req.params.name,
         req.body,
         {new:true},
         (error,data)=>{
@@ -100,10 +87,10 @@ app.put('/api/books/:id',(req,res)=>{
         })
 })
 
-app.get('/api/books/:id', (req,res)=>{
-    console.log("GET: "+req.params.id);
+app.get('/api/books/:name', (req,res)=>{
+    console.log("GET: "+req.params.name);
 
-    BookModel.findById(req.params.id,(error, data)=>{
+    BookModel.findById(req.params.name,(error, data)=>{
         res.json(data);
     })
 })

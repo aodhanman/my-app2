@@ -50,9 +50,9 @@ class Create extends React.Component {
 
     };
 
-      axios.post('http://localhost:4000/api/books',newBook) 
+      axios.post('http://localhost:4000/api/books', newBook) 
       .then()
-      .catch();
+      .catch(console.log("Error"));
 
     this.setState({
       Title: '',
@@ -77,7 +77,8 @@ class Create extends React.Component {
           </div>
           <div className="form-group">
             <label>Add Release Year: </label>
-            <input type="text"
+            <input 
+              type="text"
               className="form-control"
               value={this.state.Year}
               onChange={this.onChangeBookYear}
@@ -85,11 +86,13 @@ class Create extends React.Component {
           </div>
           <div className="form-group">
             <label>Add Rating : </label>
-            <input type="text"
-              className="form-control"
-              value={this.state.Rating}
-              onChange={this.onChangeBookRating}
-            />
+            <select id="rating" name="rating" value={this.state.value} onChange={this.handleGameRatingChange}>
+                                <option value='1' className='form-control'>1</option>
+                                <option value='2' className='form-control'>2</option>
+                                <option value='3' className='form-control'>3</option>
+                                <option value='4' className='form-control'>4</option>
+                                <option value='5' className='form-control'>5</option>
+                            </select>
           </div>
           <div className="form-group">
             <label>Add Poster Url: </label>

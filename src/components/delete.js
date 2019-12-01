@@ -51,7 +51,7 @@ class Delete extends React.Component {
 
     };
 
-      axios.put('http://localhost:4000/api/books',newBook) 
+      axios.get('http://localhost:4000/api/books',newBook) 
       .then()
       .catch();
 
@@ -69,7 +69,7 @@ class Delete extends React.Component {
 
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Delete Book Name: </label>
+            <label>Delete by Book Name: </label>
             <input type="text"
               className="form-control"
               value={this.state.Title}

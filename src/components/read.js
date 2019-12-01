@@ -1,7 +1,9 @@
 import React from 'react';
 import Books from './books';
+import '../App.css';
 import axios from 'axios';
     class Read extends React.Component {
+        //array of books
         state = {
             books: []
         };
@@ -19,8 +21,12 @@ import axios from 'axios';
         render(){
             return(
                 <div>
-                    <h1>Read Component</h1>
-                    <Books myBooks={this.state.books}></Books>
+                    <h1>Reading list</h1>
+
+                    <ul id="ListParent">
+                        <Books myBooks={this.state.books}></Books>
+
+                    </ul>
                 </div>
             );
     }
