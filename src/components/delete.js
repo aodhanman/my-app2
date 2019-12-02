@@ -76,30 +76,7 @@ class Delete extends React.Component {
               onChange={this.onChangeBookName}
             />
           </div>
-          <div className="form-group">
-            <label>Delete Release Year: </label>
-            <input type="text"
-              className="form-control"
-              value={this.state.Year}
-              onChange={this.onChangeBookYear}
-            />
-          </div>
-          <div className="form-group">
-            <label>Delete Rating : </label>
-            <input type="text"
-              className="form-control"
-              value={this.state.Rating}
-              onChange={this.onChangeBookRating}
-            />
-          </div>
-          <div className="form-group">
-            <label>Delete Poster Url: </label>
-            <input type="text"
-              className="form-control"
-              value={this.state.Poster}
-              onChange={this.onChangeBookPoster}
-            />
-          </div>
+         
           <div className="form-group">
             <input type="submit" value="Delete Book" className="btn btn-primary" />
           </div>
