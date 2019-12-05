@@ -13,13 +13,14 @@ class BookItem extends React.Component {
         return (
             <div>
 
+                
                 <Card>
-                    <Card.Header>{this.props.books.Title}</Card.Header>
+                    <Card.Header>{BookItem.Title}</Card.Header>
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
-                            <p>{this.props.books.Year}</p>
-                            <p>{"Rating " + this.props.book.Rating}</p>
-                            <img src={this.props.book.Poster} alt="Error"></img>
+                            <p>{BookItem.Year}</p>
+                            <p>{"Rating " + BookItem.Rating}</p>
+                            <img src={BookItem.Poster} alt="Error"></img>
 
 
 
