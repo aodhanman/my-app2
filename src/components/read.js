@@ -18,7 +18,7 @@ import axios from 'axios';
                 "Year": "1951",
                 "serial": "tt3498820",
                 "Type": "book",
-                "Rating": "5",
+                "Rating": "4",
                 "Poster": "https://secure.i.telegraph.co.uk/multimedia/archive/03266/book-catcher_3266686k.jpg"
                 },
                 {

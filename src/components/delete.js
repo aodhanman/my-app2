@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import BookItem from './bookitem';
-import Books from './books';
 import '../App.css';
 
 import Button from 'react-bootstrap/Button';
@@ -26,27 +24,26 @@ class Delete extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>{this.props.book.Title}</h4>
-        <p>{this.props.book.Year}</p>
-        <img src={this.props.book.Poster}></img>
+      <div className="App">
+      <h2>Delete </h2>
 
-
-        <Card border="primary" style={{ width: '28rem' }}>
-          <Card.Header>{this.props.book.title}</Card.Header>
-          <Card.Body>
-            <blockquote className="blockquote mb-0">
-              <img src={this.props.book.poster}></img>
-              <footer>
-                {this.props.book.year}
-              </footer>
-            </blockquote>
-          </Card.Body>
-
-          <Button variant="danger" onClick={this.DeleteBook}>Delete</Button>
-          <Link to={"/edit/" + this.props.book._id} className="btn btn-primary">Edit</Link>
-        </Card>
-      </div>
+      <form onSubmit={this.onSubmit}>
+        <div className="form-group">
+          <label>Delete Book Name: </label>
+          <input type="text"
+            className="form-control"
+            value={this.state.Title}
+            onChange={this.DeleteBook}
+          />
+        </div>
+        
+       
+        
+        <div className="form-group">
+          <input type="submit" value="Delete Book" className="btn btn-primary" />
+        </div>
+      </form>
+    </div>
     )
   }
 }
