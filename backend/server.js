@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb+srv://user:<user2>@cluster0-cbiqc.mongodb.net/test?retryWrites=true&w=majority';
+const mongoDB = 'mongodb+srv://user:user2@cluster0-cbiqc.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(mongoDB,  {useNewUrlParser:true});
 

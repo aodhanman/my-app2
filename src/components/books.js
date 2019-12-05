@@ -6,7 +6,9 @@ class Books extends React.Component{
     render(){
         return this.props.myBooks.map((book)=>{
             console.log({book});
-            return <BookItem key={book.imdbID} book={book}></BookItem>
+            return <BookItem key={book.serial} book={book}></BookItem>
+
+            
         });
     }
 }

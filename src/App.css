@@ -9,7 +9,10 @@
 
 .App-header {
   background-color: #282c34;
-  background: url("my-app/Assets/library.jpg") ;
+
+  background: #eee url('../src/Assets/library.jpg') center;
+  background-size: cover;
+  border-bottom: 1px solid #ccc;
 
   min-height: 100vh;
   display: flex;

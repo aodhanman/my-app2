@@ -1,88 +1,53 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import BookItem from './bookitem';
+import Books from './books';
+import '../App.css';
+
+import Button from 'react-bootstrap/Button';
+
+import Card from 'react-bootstrap/Card';
 
 class Delete extends React.Component {
 
   constructor() {
     super();
-    this.onChangeBookName = this.onChangeBookName.bind(this);
-
-    this.onChangeBookYear = this.onChangeBookYear.bind(this);
-    this.onChangeBookPoster = this.onChangeBookPoster.bind(this);
-    this.onChangeBookRating = this.onChangeBookRating.bind(this);
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.state = {
-      Title: '',
-      Year: '',
-      Rating: '',
-      Poster: ''
-    }
+    this.DeleteBook = this.DeleteBook.bind(this);
   }
-  onChangeBookName(e) {
-    this.setState({
-      Title: e.target.value
-    });
-  }
-  onChangeBookYear(e) {
-    this.setState({
-      Year: e.target.value
-    });
-  }
-  onChangeBookPoster(e) {
-    this.setState({
-      Poster: e.target.value
-    });
-  }
-  onChangeBookRating(e) {
-    this.setState({
-      Rating: e.target.value
-    });
-  }
-  onSubmit(e) {
-    e.preventDefault();
-    
-    const newBook = {
-      title: this.state.Title,
-      year: this.state.Year,
-      rating: this.state.Rating,
 
-      poster: this.state.Poster
-
-    };
-
-      axios.get('http://localhost:4000/api/books',newBook) 
+  DeleteBook(e) {
+    console.log("Delete Clicked");
+    axios.delete("http://localhost:4000/api/books/" + this.props.books._id)
       .then()
       .catch();
 
-    this.setState({
-      Title: '',
-      Year: '',
-      Rating: '',
-      Poster: ''
-    })
   }
+
   render() {
     return (
-      <div className="App">
-        <h2>Delete</h2>
+      <div>
+        <h4>{this.props.book.Title}</h4>
+        <p>{this.props.book.Year}</p>
+        <img src={this.props.book.Poster}></img>
 
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Delete by Book Name: </label>
-            <input type="text"
-              className="form-control"
-              value={this.state.Title}
-              onChange={this.onChangeBookName}
-            />
-          </div>
-         
-          <div className="form-group">
-            <input type="submit" value="Delete Book" className="btn btn-primary" />
-          </div>
-        </form>
+
+        <Card border="primary" style={{ width: '28rem' }}>
+          <Card.Header>{this.props.book.title}</Card.Header>
+          <Card.Body>
+            <blockquote className="blockquote mb-0">
+              <img src={this.props.book.poster}></img>
+              <footer>
+                {this.props.book.year}
+              </footer>
+            </blockquote>
+          </Card.Body>
+
+          <Button variant="danger" onClick={this.DeleteBook}>Delete</Button>
+          <Link to={"/edit/" + this.props.book._id} className="btn btn-primary">Edit</Link>
+        </Card>
       </div>
-    );
+    )
   }
 }
-export default Delete;
+export default BookItem;

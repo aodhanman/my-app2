@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../App.css';
 
 class Create extends React.Component {
 
@@ -12,6 +13,8 @@ class Create extends React.Component {
     this.onChangeBookRating = this.onChangeBookRating.bind(this);
 
     this.onSubmit = this.onSubmit.bind(this);
+
+
     this.state = {
       Title: '',
       Year: '',
@@ -39,6 +42,9 @@ class Create extends React.Component {
     });
   }
   onSubmit(e) {
+
+    alert("Succesful");
+
     e.preventDefault();
     
     const newBook = {
@@ -48,7 +54,7 @@ class Create extends React.Component {
 
       poster: this.state.Poster
 
-    };
+    }
 
       axios.post('http://localhost:4000/api/books', newBook) 
       .then()
@@ -59,7 +65,7 @@ class Create extends React.Component {
       Year: '',
       Rating: '',
       Poster: ''
-    })
+    });
   }
   render() {
     return (
@@ -86,7 +92,7 @@ class Create extends React.Component {
           </div>
           <div className="form-group">
             <label>Add Rating : </label>
-            <select id="rating" name="rating" value={this.state.value} onChange={this.handleGameRatingChange}>
+            <select id="rating" name="rating" value={this.state.value} onChange={this.onChangeBookRating}>
                                 <option value='1' className='form-control'>1</option>
                                 <option value='2' className='form-control'>2</option>
                                 <option value='3' className='form-control'>3</option>
