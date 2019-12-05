@@ -58,28 +58,28 @@ app.get('/api/books', (req, res) => {
     
 })
 
-app.get('/api/books/:name', (req, res)=>{
-    console.log(req.params.name);
+app.get('/api/books/:id', (req, res)=>{
+    console.log(req.params.id);
 
-    BookModel.findById(req.params.name, (error,data)=>{
+    BookModel.findById(req.params.id, (error,data)=>{
         res.json(data);
     })
 })
 
-app.delete('/api/books/:name', (req, res)=>{
-    console.log(req.params.name);
+app.delete('/api/books/:id', (req, res)=>{
+    console.log(req.params.id);
 
-    BookModel.deleteOne({_name: req.params.name},
+    BookModel.deleteOne({_id: req.params.id},
         (error, data) =>{
             res.json(data);
         })
 })
 
-app.put('/api/books/:name',(req,res)=>{
-    console.log("Edit: "+req.params.name);
+app.put('/api/books/:id',(req,res)=>{
+    console.log("Edit: "+req.params.id);
     console.log(req.body);
     
-    BookModel.findByIdAndUpdate(req.params.name,
+    BookModel.findByIdAndUpdate(req.params.id,
         req.body,
         {new:true},
         (error,data)=>{
@@ -87,10 +87,10 @@ app.put('/api/books/:name',(req,res)=>{
         })
 })
 
-app.get('/api/books/:name', (req,res)=>{
-    console.log("GET: "+req.params.name);
+app.get('/api/books/:id', (req,res)=>{
+    console.log("GET: "+req.params.id);
 
-    BookModel.findById(req.params.name,(error, data)=>{
+    BookModel.findById(req.params.id,(error, data)=>{
         res.json(data);
     })
 })
@@ -113,9 +113,9 @@ app.post('/api/books', (req,res)=>{
 
     res.json('post recieved!');
 })
-app.get('/hello/:name', (req, res) => {
-    console.log(req.params.name);
-    res.send('Hello ' + req.params.name)
+app.get('/hello/:title', (req, res) => {
+    console.log(req.params.title);
+    res.send('Hello ' + req.params.title)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

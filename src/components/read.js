@@ -4,8 +4,12 @@ import '../App.css';
 import axios from 'axios';
     class Read extends React.Component {
         //array of books
+        constructor(){
+            super();
+            this.ReloadDataMethod = this.ReloadDataMethod.bind(this);
+        }
         state = {
-            books: [/*{
+            books: [{
                 "Title": "A Clockwork Orange",
                 "Year": "1963",
                 "serial": "tt4154756",
@@ -34,7 +38,7 @@ import axios from 'axios';
                 "Type": "book",
                 "Rating": "5",
                 "Poster": "https://secure.i.telegraph.co.uk/multimedia/archive/03266/book-kill_3266682k.jpg"
-                }*/
+                }
             ]
         };
     
@@ -50,6 +54,15 @@ import axios from 'axios';
             });
         }
     
+        ReloadDataMethod(){
+            axios.get('http://localhost:4000/api/books')
+            .then((response)=>{
+                this.setState({books: response.data.books})
+            })
+            .catch((error)=>{
+                console.log(error);
+            });
+        }
         render(){
             return(
                 <div>

@@ -43,7 +43,6 @@ class Create extends React.Component {
   }
   onSubmit(e) {
 
-    alert("Succesful");
 
     e.preventDefault();
     
@@ -66,6 +65,8 @@ class Create extends React.Component {
       Rating: '',
       Poster: ''
     });
+    alert("Submitted");
+
   }
   render() {
     return (

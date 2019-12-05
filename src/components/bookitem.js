@@ -13,7 +13,7 @@ class BookItem extends React.Component {
         return (
             <div>
 
-                
+            
                 <Card>
                     <Card.Header>{BookItem.Title}</Card.Header>
                     <Card.Body>

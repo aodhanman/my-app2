@@ -3,9 +3,7 @@ import axios from 'axios';
 import BookItem from './bookitem';
 import '../App.css';
 
-import Button from 'react-bootstrap/Button';
 
-import Card from 'react-bootstrap/Card';
 
 class Delete extends React.Component {
 
